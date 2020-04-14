@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
+        <h1 class="text-center">Weather Dashboard</h1>
+    </div>
+    <!--This will be where users input data for city search-->
+    <section class="container float-left">
+        <form id="search-form">
+            <h3>Search for a City: </h3>
+            <input type="text" id="city-input">
+    
+            <!--This button will trigger the AJAX call-->
+            <button type="search" id="input-city" class="btn btn-primary fas fa-search"></button>
+        </form>
+    </section>
+
+    <section class="container float-right">
+        <div id="city">Kansas City</div>
+        <div id="temperature">70 F</div>
+        <div id="humidity">40%</div>
+        <div id="wind-speed">14 mh</div>
+        <div id="u-v">9.8</div>
+    </section>
+
+</body>
+<script src="./assets/script.js"></script>
+
+</html>
