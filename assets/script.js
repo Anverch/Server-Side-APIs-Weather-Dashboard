@@ -15,7 +15,8 @@ $("#search").on("click", function (event) {
 
     var icon = response.weather[0].icon;
     var imgURL = "https:openweathermap.org/img/wn/" + icon + "@2x.png"
-    var iconImg = $("img").attr("src", imgURL);
+    var iconImg = $("<img>").attr("src", imgURL);
+
 
     // Transfer content to HTML
     $("#city").text(" " + response.name + moment().format(" (M/D/YYYY)"));
@@ -26,7 +27,7 @@ $("#search").on("click", function (event) {
 
     //Current Weather icon to HTML
     $("#icon-image").html(iconImg);
-    $("#icon-image").addClass("icon-size");
+    $(iconImg).addClass("icon-size");
 
         
     var lat = response.coord.lat;
