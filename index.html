@@ -17,38 +17,106 @@
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid p-2 bg-dark text-white">
-        <h1 class="text-center">Weather Dashboard</h1>
+
+    <div class="navbar bg-dark shadow-sm py-0">
+        <div class="container px-0 d-flex justify-content-center">
+            <div class="row">
+                <h2 class="my-0 p-2 mr-md-auto text-white font-weight-bold">Weather Dashboard</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <section class="col-md-3 search-section">
+                <form class="form-inline" id="search-form">
+                    <div class="form-group">
+                        <h4>Search for the City:</h4>
+                    </div>
+                    <div class="form-group">
+                        <label for="city-input" class="sr-only">Search City</label>
+                        <input type="text" class="form-control" id="city-input" placeholder="Search city">
+                    </div>
+                    <button type="submit" id="search" class="btn btn-primary p-2 fas fa-search"></button>
+                </form>
+            </section>
+
+            <section class="col-md-9">
+                <div class="jumbotron p-2 mt-3 mb-3">
+                    <div class="container">
+                        <p id="city">City:</p>
+                        <p id="temperature">Temperature:</p>
+                        <p id="humidity">Humidity:</p>
+                        <p id="wind-speed">Wind Speed:</p>
+                        <p id="u-v-index">UV Index:</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">04/15/2020</h5>
+                                <p class="card-text">
+                                    <img src="https://openweathermap.org/img/wn/10n@2x.png" width="50" height="50">
+                                </p>
+                                <p class="card-text">Temp: 56 F</p>
+                                <p class="card-text">Humidity: 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">04/15/2020</h5>
+                                <p class="card-text">
+                                    <img src="https://openweathermap.org/img/wn/10n@2x.png" width="50" height="50">
+                                </p>
+                                <p class="card-text">Temp: 56 F</p>
+                                <p class="card-text">Humidity: 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">04/15/2020</h5>
+                                <p class="card-text">
+                                    <img src="https://openweathermap.org/img/wn/02d@2x.png" width="50" height="50">
+                                </p>
+                                <p class="card-text">Temp: 56 F</p>
+                                <p class="card-text">Humidity: 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">04/15/2020</h5>
+                                <p class="card-text">
+                                    <img src="https://openweathermap.org/img/wn/04n@2x.png" width="50" height="50">
+                                </p>
+                                <p class="card-text">Temp: 56 F</p>
+                                <p class="card-text">Humidity: 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">04/15/2020</h5>
+                                <p class="card-text">
+                                    <img src="https://openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                                </p>
+                                <p class="card-text">Temp: 56 F</p>
+                                <p class="card-text">Humidity: 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
     <!--This will be where users input data for city search-->
-    <div class="row">
-        <section class="col-md-4">
-            <form id="search-form">
-                <h3>Search for a City: </h3>
-                <input type="text" id="city-input">
-        
-                <!--This button will trigger the AJAX call-->
-                <button type="search" id="search" class="btn btn-primary fas fa-search"></button>
-            </form>
-        </section>
-    
-        <section class="col-md-8 p-4">
-            <div class="row city-info">
-                <div class="col-12">
-                    <div id="city">City:</div>
-                    <div id="temperature">Temperature:</div>
-                    <div id="humidity">Humidity:</div>
-                    <div id="wind-speed">Wind Speed:</div>
-                    <div id="u-v-index">UV Index:</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    5 day forecast
-                </div>
-            </div>
-        </section>
-    </div>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -1,9 +1,8 @@
 
-section {
-    margin: auto;
-    border: solid 2px black;
+.search-section {
+    background-color:#dedede;
 }
 
 .city-info {
-    border: solid black;
+    
 }

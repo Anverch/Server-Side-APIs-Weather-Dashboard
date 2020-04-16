@@ -11,7 +11,6 @@ $("#search").on("click", function (event) {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
 
     // Transfer content to HTML
     $("#city").text("City: " + response.name + moment().format(" (M/D/YYYY)"));
@@ -30,6 +29,13 @@ $("#search").on("click", function (event) {
     }).then(function (response) {
       $("#u-v-index").text("UV Index: " + response.current.uvi);
 
+      var imgURL = (response.weather.icon);
+      // var image = $("<img>").attr("src", imgURL);
+      // $("#city").append(image);
+
+
+
+      current.weather.icon
     })
 
   });
