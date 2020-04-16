@@ -13,10 +13,10 @@ $("#search").on("click", function (event) {
   }).then(function (response) {
 
     // Transfer content to HTML
-    $("#city").text("City: " + response.name + moment().format(" (M/D/YYYY)"));
-    $("#temperature").text("Temperature: " + response.main.temp + " " + String.fromCharCode(176) + "F");
-    $("#humidity").text("Humidity: " + response.main.humidity);
-    $("#wind-speed").text("Wind Speed: " + response.wind.speed);
+    $("#city").text(" " + response.name + moment().format(" (M/D/YYYY)"));
+    $("#temperature").text(" " + response.main.temp + " " + String.fromCharCode(176) + "F");
+    $("#humidity").text(" " + response.main.humidity + " %");
+    $("#wind-speed").text(" " + response.wind.speed+ " MPH");
 
     
     var lat = response.coord.lat;
@@ -27,7 +27,7 @@ $("#search").on("click", function (event) {
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      $("#u-v-index").text("UV Index: " + response.current.uvi);
+      $("#u-v-index").text(response.current.uvi);
 
       var imgURL = (response.weather.icon);
       // var image = $("<img>").attr("src", imgURL);
