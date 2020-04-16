@@ -2,121 +2,121 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/style.css">
 
-    <title>Weather App</title>
+  <title>Weather App</title>
 </head>
 
 <body>
 
-    <div class="navbar bg-dark shadow-sm py-0">
-        <div class="container px-0 d-flex justify-content-center">
-            <div class="row">
-                <h2 class="my-0 p-2 mr-md-auto text-white font-weight-bold">Weather Dashboard</h2>
-            </div>
-        </div>
+  <div class="navbar bg-dark shadow-sm py-0">
+    <div class="container px-0 d-flex justify-content-center">
+      <div class="row">
+        <h2 class="my-0 p-2 mr-md-auto text-white font-weight-bold">Weather Dashboard</h2>
+      </div>
     </div>
+  </div>
 
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <div class="row">
+      <section class="col-md-3 search-section">
+        <form class="form-inline" id="search-form">
+          <div class="form-group">
+            <h4>Search for the City:</h4>
+          </div>
+          <div class="form-group">
+            <label for="city-input" class="sr-only">Search City</label>
+            <input type="text" class="form-control" id="city-input" placeholder="Search city">
+          </div>
+          <button type="submit" id="search" class="btn btn-primary p-2 fas fa-search"></button>
+        </form>
+      </section>
+
+      <section class="col-md-9">
+        <div class="jumbotron p-2 mt-3 mb-3">
+          <div class="container">
+            <p class="font-weight-bold">City:<span id="city"></span><img id="icon-image"></img></p>
+            <p>Temperature:<span id="temperature"></span></p>
+            <p>Humidity:<span id="humidity"></span></p>
+            <p>Wind Speed:<span id="wind-speed"></span></p>
+            <p>UV Index:<span class="badge badge-danger" id="u-v-index"></span></p>
+          </div>
+        </div>
         <div class="row">
-            <section class="col-md-3 search-section">
-                <form class="form-inline" id="search-form">
-                    <div class="form-group">
-                        <h4>Search for the City:</h4>
-                    </div>
-                    <div class="form-group">
-                        <label for="city-input" class="sr-only">Search City</label>
-                        <input type="text" class="form-control" id="city-input" placeholder="Search city">
-                    </div>
-                    <button type="submit" id="search" class="btn btn-primary p-2 fas fa-search"></button>
-                </form>
-            </section>
-
-            <section class="col-md-9">
-                <div class="jumbotron p-2 mt-3 mb-3">
-                    <div class="container">
-                        <p>City:<span id= "city"></span></p>
-                        <p>Temperature:<span id="temperature"></span></p>
-                        <p>Humidity:<span  id="humidity"></span></p>
-                        <p>Wind Speed:<span id="wind-speed"></span></p>
-                        <p>UV Index:<span class="badge badge-danger" id="u-v-index"></span></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">04/15/2020</h5>
-                                <p class="card-text">
-                                    <img src="https://openweathermap.org/img/wn/10n@2x.png" width="50" height="50">
-                                </p>
-                                <p class="card-text">Temp: 56 F</p>
-                                <p class="card-text">Humidity: 50%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">04/15/2020</h5>
-                                <p class="card-text">
-                                    <img src="https://openweathermap.org/img/wn/10n@2x.png" width="50" height="50">
-                                </p>
-                                <p class="card-text">Temp: 56 F</p>
-                                <p class="card-text">Humidity: 50%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">04/15/2020</h5>
-                                <p class="card-text">
-                                    <img src="https://openweathermap.org/img/wn/02d@2x.png" width="50" height="50">
-                                </p>
-                                <p class="card-text">Temp: 56 F</p>
-                                <p class="card-text">Humidity: 50%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">04/15/2020</h5>
-                                <p class="card-text">
-                                    <img src="https://openweathermap.org/img/wn/04n@2x.png" width="50" height="50">
-                                </p>
-                                <p class="card-text">Temp: 56 F</p>
-                                <p class="card-text">Humidity: 50%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">04/15/2020</h5>
-                                <p class="card-text">
-                                    <img src="https://openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
-                                </p>
-                                <p class="card-text">Temp: 56 F</p>
-                                <p class="card-text">Humidity: 50%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+          <div class="col">
+            <div class="card bg-primary text-white">
+              <div class="card-body">
+                <h5 class="card-title">04/15/2020</h5>
+                <p class="card-text">
+                  <img src="https://openweathermap.org/img/wn/10n@2x.png" width="50" height="50">
+                </p>
+                <p class="card-text">Temp: 56 F</p>
+                <p class="card-text">Humidity: 50%</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card bg-primary text-white">
+              <div class="card-body">
+                <h5 class="card-title">04/15/2020</h5>
+                <p class="card-text">
+                  <img src="https://openweathermap.org/img/wn/10n@2x.png" width="50" height="50">
+                </p>
+                <p class="card-text">Temp: 56 F</p>
+                <p class="card-text">Humidity: 50%</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card bg-primary text-white">
+              <div class="card-body">
+                <h5 class="card-title">04/15/2020</h5>
+                <p class="card-text">
+                  <img src="https://openweathermap.org/img/wn/02d@2x.png" width="50" height="50">
+                </p>
+                <p class="card-text">Temp: 56 F</p>
+                <p class="card-text">Humidity: 50%</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card bg-primary text-white">
+              <div class="card-body">
+                <h5 class="card-title">04/15/2020</h5>
+                <p class="card-text">
+                  <img src="https://openweathermap.org/img/wn/04n@2x.png" width="50" height="50">
+                </p>
+                <p class="card-text">Temp: 56 F</p>
+                <p class="card-text">Humidity: 50%</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card bg-primary text-white">
+              <div class="card-body">
+                <h5 class="card-title">04/15/2020</h5>
+                <p class="card-text">
+                  <img src="https://openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                </p>
+                <p class="card-text">Temp: 56 F</p>
+                <p class="card-text">Humidity: 50%</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
     </div>
-    <!--This will be where users input data for city search-->
+  </div>
+  <!--This will be where users input data for city search-->
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
