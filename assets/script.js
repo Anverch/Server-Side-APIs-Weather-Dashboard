@@ -14,7 +14,7 @@ $("#search").on("click", function (event) {
   }).then(function (response) {
 
     var icon = response.weather[0].icon;
-    var imgURL = "https:openweathermap.org/img/wn/" + icon + "@2x.png"
+    var imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
     var iconImg = $("<img>").attr("src", imgURL);
 
 
