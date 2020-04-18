@@ -1,8 +1,11 @@
-#icon-image {
-    
-}
+
 .search-section {
     background-color:#dedede;
+}
+
+.jumbotron {
+    background-color: white;
+    border: gray solid;
 }
 
 .icon-size {

@@ -1,5 +1,15 @@
 var apiKey = "76e9ff367a27de5d400ffd75af441c88";
 
+var dayOne = moment().add(1, 'day').format(" (M/D/YYYY)");
+$("#day-one").text(dayOne);
+var dayTwo = moment().add(2, 'day').format(" (M/D/YYYY)");
+$("#day-two").text(dayTwo);
+var dayThree = moment().add(3, 'day').format(" (M/D/YYYY)");
+$("#day-three").text(dayThree);
+var dayFour = moment().add(4, 'day').format(" (M/D/YYYY)");
+$("#day-four").text(dayFour);
+var dayFive = moment().add(5, 'day').format(" (M/D/YYYY)");
+$("#day-five").text(dayFive);
 
 $("#search").on("click", function (event) {
 
@@ -46,3 +56,14 @@ $("#search").on("click", function (event) {
   });
 
 });
+
+function getUVColorClass() {
+  var currentUVIndex = response.current.uvi;
+  if (currentUVIndex < 6) {
+      return "badge badge-success";
+  } else if (currentUVIndex < 8) {
+      return "badge badge-warning";
+  } else {
+      return "badge badge-danger";
+  }
+}
