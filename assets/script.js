@@ -3,19 +3,15 @@ var apiKey = "76e9ff367a27de5d400ffd75af441c88";
 
 // Adds 5 next 5 day dates to the HTML
 var dayOne = moment().add(1, 'day').format(" (M/D/YYYY)");
-$("#day-one-date").text(dayOne);
-
+$("#day-date-1").text(dayOne);
 var dayTwo = moment().add(2, 'day').format(" (M/D/YYYY)");
-$("#day-two-date").text(dayTwo);
-
+$("#day-date-2").text(dayTwo);
 var dayThree = moment().add(3, 'day').format(" (M/D/YYYY)");
-$("#day-three-date").text(dayThree);
-
+$("#day-date-3").text(dayThree);
 var dayFour = moment().add(4, 'day').format(" (M/D/YYYY)");
-$("#day-four-date").text(dayFour);
-
+$("#day-date-4").text(dayFour);
 var dayFive = moment().add(5, 'day').format(" (M/D/YYYY)");
-$("#day-five-date").text(dayFive);
+$("#day-date-5").text(dayFive);
 
 // Adds Search to HTML
 $("#search").on("click", function (event) {
@@ -24,8 +20,13 @@ $("#search").on("click", function (event) {
   var searchedCity = $("#city-input").val();
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&units=imperial&appid=" + apiKey;
 
+  localStorage.setItem("city", searchedCity);
+  console.log(localStorage);
+  var savedLocation = localStorage.getItem("city");
+  $("#saved-city").text(savedLocation).addClass("btn btn-light");
 
-  $.ajax({
+
+   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (response) {
@@ -34,6 +35,7 @@ $("#search").on("click", function (event) {
     var imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
     var iconImg = $("<img>").attr("src", imgURL);
 
+    $("#weekly-forecast").removeClass("hide");
 
     // Transfer content to HTML
     $("#city").text(" " + response.name + moment().format(" (M/D/YYYY)"));
@@ -55,42 +57,42 @@ $("#search").on("click", function (event) {
       url: uvQueryURL,
       method: "GET"
     }).then(function (response) {
-      $("#u-v-index").text(" " + response.current.uvi);
+      $("#u-v-index").text(" " + response.current.uvi).addClass(getUVColorClass(response.current.uvi));
 
       // Adds weekly temps to the HTML
       var dayOneIcon = response.daily[1].weather[0].icon;
       var weeklyURL = "http://openweathermap.org/img/wn/" + dayOneIcon + "@2x.png";
-      $("#day-one-icon").attr("src", weeklyURL).html("#day-one-icon").addClass("icon-size");
-      $("#day-one-temp").text(response.daily[1].temp.max + " °F");
-      $("#day-one-hum").text(response.daily[1].humidity + " %");
+      $("#day-icon-1").attr("src", weeklyURL).html("#day-icon-1").addClass("icon-size");
+      $("#day-temp-1").text(response.daily[1].temp.max + " °F");
+      $("#day-hum-1").text(response.daily[1].humidity + " %");
 
       // Day 2
       var dayTwoIcon = response.daily[2].weather[0].icon;
       weeklyURL = "http://openweathermap.org/img/wn/" + dayTwoIcon + "@2x.png";
-      $("#day-two-icon").attr("src", weeklyURL).html("#day-two-icon").addClass("icon-size");
-      $("#day-two-temp").text(response.daily[2].temp.max + " °F");
-      $("#day-two-hum").text(response.daily[2].humidity + " %");
+      $("#day-icon-2").attr("src", weeklyURL).html("#day-icon-2").addClass("icon-size");
+      $("#day-temp-2").text(response.daily[2].temp.max + " °F");
+      $("#day-hum-2").text(response.daily[2].humidity + " %");
 
       // Day 3
       var dayThreeIcon = response.daily[3].weather[0].icon;
       weeklyURL = "http://openweathermap.org/img/wn/" + dayThreeIcon + "@2x.png";
-      $("#day-three-icon").attr("src", weeklyURL).html("#day-three-icon").addClass("icon-size");
-      $("#day-three-temp").text(response.daily[3].temp.max + " °F");
-      $("#day-three-hum").text(response.daily[3].humidity + " %");
+      $("#day-icon-3").attr("src", weeklyURL).html("#day-icon-3").addClass("icon-size");
+      $("#day-temp-3").text(response.daily[3].temp.max + " °F");
+      $("#day-hum-3").text(response.daily[3].humidity + " %");
 
       // Day 4
       var dayFourIcon = response.daily[4].weather[0].icon;
       weeklyURL = "http://openweathermap.org/img/wn/" + dayFourIcon + "@2x.png";
-      $("#day-four-icon").attr("src", weeklyURL).html("#day-four-icon").addClass("icon-size");
-      $("#day-four-temp").text(response.daily[4].temp.max + " °F");
-      $("#day-four-hum").text(response.daily[4].humidity + " %");
+      $("#day-icon-4").attr("src", weeklyURL).html("#day-icon-4").addClass("icon-size");
+      $("#day-temp-4").text(response.daily[4].temp.max + " °F");
+      $("#day-hum-4").text(response.daily[4].humidity + " %");
 
       // Day 5
       var dayFiveIcon = response.daily[5].weather[0].icon;
       weeklyURL = "http://openweathermap.org/img/wn/" + dayFiveIcon + "@2x.png";
-      $("#day-five-icon").attr("src", weeklyURL).html("#day-five-icon").addClass("icon-size");
-      $("#day-five-temp").text(response.daily[2].temp.max + " °F");
-      $("#day-five-hum").text(response.daily[2].humidity + " %");
+      $("#day-icon-5").attr("src", weeklyURL).html("#day-icon-5").addClass("icon-size");
+      $("#day-temp-5").text(response.daily[2].temp.max + " °F");
+      $("#day-hum-5").text(response.daily[2].humidity + " %");
 
     });
 
@@ -98,13 +100,15 @@ $("#search").on("click", function (event) {
 
 });
 
-function getUVColorClass() {
-  var currentUVIndex = response.current.uvi;
+// function color coding  UV index
+function getUVColorClass(color) {
+  var currentUVIndex = color;
   if (currentUVIndex < 6) {
     return "badge badge-success";
-  } else if (currentUVIndex < 8) {
+  } else if (currentUVIndex >= 6 && currentUVIndex < 8 ) {
     return "badge badge-warning";
   } else {
     return "badge badge-danger";
   }
 }
+
