@@ -20,10 +20,10 @@ $("#search").on("click", function (event) {
   var searchedCity = $("#city-input").val();
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&units=imperial&appid=" + apiKey;
 
-  localStorage.setItem("city", searchedCity);
-  console.log(localStorage);
-  var savedLocation = localStorage.getItem("city");
-  $("#saved-city").text(savedLocation).addClass("btn btn-light");
+  // localStorage.setItem("city", searchedCity);
+  // console.log(localStorage);
+  // var savedLocation = localStorage.getItem("city");
+  // $("#saved-city").text(savedLocation).addClass("btn btn-light");
 
 
    $.ajax({
