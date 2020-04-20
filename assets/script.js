@@ -13,27 +13,71 @@ $("#day-date-4").text(dayFour);
 var dayFive = moment().add(5, 'day').format(" (M/D/YYYY)");
 $("#day-date-5").text(dayFive);
 
+displayCity();
+var savedCities = JSON.parse(localStorage.getItem("city")) || [];
+if (savedCities.length > 0) {
+  searchCity(savedCities[savedCities.length-1]);
+}
 // Adds Search to HTML
 $("#search").on("click", function (event) {
 
   event.preventDefault();
-  var searchedCity = $("#city-input").val();
-  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&units=imperial&appid=" + apiKey;
-
-  // localStorage.setItem("city", searchedCity);
-  // console.log(localStorage);
-  // var savedLocation = localStorage.getItem("city");
-  // $("#saved-city").text(savedLocation).addClass("btn btn-light");
+  var userInput = $("#city-input").val();
+  searchCity(userInput);
 
 
-   $.ajax({
+});
+
+// function color coding  UV index
+function getUVColorClass(color) {
+  var currentUVIndex = color;
+  if (currentUVIndex < 6) {
+    return "badge badge-success";
+  } else if (currentUVIndex >= 6 && currentUVIndex < 8) {
+    return "badge badge-warning";
+  } else {
+    return "badge badge-danger";
+  }
+}
+
+//
+function displayCity(){
+  var savedCities = JSON.parse(localStorage.getItem("city")) || [];
+  $("#saved-city").empty();
+  savedCities.forEach(city => {
+    var cityDiv = $("<div>").text(city).addClass("row");
+    $("#saved-city").append(cityDiv);
+    cityDiv.on("click", function () {
+      searchCity(city);
+    });
+  });
+}
+
+function saveCity(userInput) {
+  var savedCities = JSON.parse(localStorage.getItem("city")) || [];
+  if (!savedCities.includes(userInput)) {
+    savedCities.push(userInput);
+  }
+  localStorage.setItem("city", JSON.stringify(savedCities));
+}
+
+function searchCity(userInput) {
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&units=imperial&appid=" + apiKey;
+
+  $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (response) {
+    if (response.cod === 200) {
+      saveCity(userInput);
+      displayCity();
+    }
 
     var icon = response.weather[0].icon;
     var imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
     var iconImg = $("<img>").attr("src", imgURL);
+
+
 
     $("#weekly-forecast").removeClass("hide");
 
@@ -98,17 +142,4 @@ $("#search").on("click", function (event) {
 
   });
 
-});
-
-// function color coding  UV index
-function getUVColorClass(color) {
-  var currentUVIndex = color;
-  if (currentUVIndex < 6) {
-    return "badge badge-success";
-  } else if (currentUVIndex >= 6 && currentUVIndex < 8 ) {
-    return "badge badge-warning";
-  } else {
-    return "badge badge-danger";
-  }
 }
-
